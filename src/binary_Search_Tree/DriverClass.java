@@ -22,7 +22,6 @@ public class DriverClass {
 	}
 
 	private static void setNode() {
-
 //		Inserting 16 number of values including one repeat value:15.
 //		Therefore, total number of available values : 15.
 		addNode(-6, bst, root, randomizedBST);
@@ -62,9 +61,9 @@ public class DriverClass {
 		System.out.println("--------------------------------------");
 	}
 
+//	Printing values that inserted to the trees. Each algorithm will print by three traversals way.
+//	Printing the value with their height and balance factor by Pre-order traversal way.
 	private static void printInitialOrder() {
-//		Printing values that inserted to the trees. Each algorithm will print by three traversals way.
-//		Printing the value with their height and balance factor by Pre-order traversal way.
 		System.out.print("Standard BST algorithm:");
 		bst.printAllTraversals();
 		bst.printPreOrderWithHeightAndBf();
@@ -108,12 +107,10 @@ public class DriverClass {
 
 ///////////////////////////////              Root Insert                ///////////////////////////////////
 	private static void testRootInsert() {
-		System.out.println("\n" + "*************************  Root Insert operation  *************************" + "\n");
-
-		System.out.println("Before Operation:");
-
 		// Already using root insert during the data setting process. Here is just
 		// example.
+		System.out.println("\n" + "*************************  Root Insert operation  *************************" + "\n");
+		System.out.println("Before Operation:");
 
 		// printing tree before insert.
 		root.printAllTraversals();
