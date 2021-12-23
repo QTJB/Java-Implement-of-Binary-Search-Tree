@@ -21,22 +21,6 @@ public class DriverClass {
 
 	}
 
-	private static void printInitialOrder() {
-//		Printing values that inserted to the trees. Each algorithm will print by three traversals way.
-//		Printing the value with their height and balance factor by Pre-order traversal way.
-		System.out.print("Standard BST algorithm:");
-		bst.printAllTraversals();
-		bst.printPreOrderWithHeightAndBf();
-
-		System.out.print("Root Insert algorithm:");
-		root.printAllTraversals();
-		root.printPreOrderWithHeightAndBf();
-
-		System.out.print("AVL algorithm:");
-		randomizedBST.printAllTraversals();
-		randomizedBST.printPreOrderWithHeightAndBf();
-	}
-
 	private static void setNode() {
 
 //		Inserting 16 number of values including one repeat value:15.
@@ -76,6 +60,22 @@ public class DriverClass {
 		System.out.println("\n" + "Inserting by AVL Insert algorithm:");
 		trees[2].randomizedInsert(value);
 		System.out.println("--------------------------------------");
+	}
+
+	private static void printInitialOrder() {
+//		Printing values that inserted to the trees. Each algorithm will print by three traversals way.
+//		Printing the value with their height and balance factor by Pre-order traversal way.
+		System.out.print("Standard BST algorithm:");
+		bst.printAllTraversals();
+		bst.printPreOrderWithHeightAndBf();
+
+		System.out.print("Root Insert algorithm:");
+		root.printAllTraversals();
+		root.printPreOrderWithHeightAndBf();
+
+		System.out.print("AVL algorithm:");
+		randomizedBST.printAllTraversals();
+		randomizedBST.printPreOrderWithHeightAndBf();
 	}
 
 ///////////////////////////////       Standard BST operation		///////////////////////////////////
