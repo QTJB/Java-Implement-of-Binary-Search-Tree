@@ -3,8 +3,9 @@ package binary_Search_Tree;
 public class DriverClass {
 
 	static BST bst = new BST();
-	static BST root = new BST();
+	static BST rootInsert = new BST();
 	static BST randomizedBST = new BST();
+	static BST avlBST = new BST();
 
 	public static void main(String[] args) {
 
@@ -24,40 +25,43 @@ public class DriverClass {
 	private static void setNode() {
 //		Inserting 16 number of values including one repeat value:15.
 //		Therefore, total number of available values : 15.
-		addNode(-6, bst, root, randomizedBST);
-		addNode(-8, bst, root, randomizedBST);
-		addNode(0, bst, root, randomizedBST);
-		addNode(1, bst, root, randomizedBST);
-		addNode(6, bst, root, randomizedBST);
-		addNode(15, bst, root, randomizedBST);
-		addNode(40, bst, root, randomizedBST);
-		addNode(456, bst, root, randomizedBST);
-		addNode(7, bst, root, randomizedBST);
-		addNode(31, bst, root, randomizedBST);
-		addNode(11, bst, root, randomizedBST);
-		addNode(27, bst, root, randomizedBST);
-		addNode(15, bst, root, randomizedBST); // Testing whether the tree can add existed value;
-		addNode(57, bst, root, randomizedBST);
-		addNode(108, bst, root, randomizedBST);
-		addNode(-13, bst, root, randomizedBST);
+		addNode(-6, bst, rootInsert, randomizedBST, avlBST);
+		addNode(-8, bst, rootInsert, randomizedBST, avlBST);
+		addNode(0, bst, rootInsert, randomizedBST, avlBST);
+		addNode(1, bst, rootInsert, randomizedBST, avlBST);
+		addNode(6, bst, rootInsert, randomizedBST, avlBST);
+		addNode(15, bst, rootInsert, randomizedBST, avlBST);
+		addNode(40, bst, rootInsert, randomizedBST, avlBST);
+		addNode(456, bst, rootInsert, randomizedBST, avlBST);
+		addNode(7, bst, rootInsert, randomizedBST, avlBST);
+		addNode(31, bst, rootInsert, randomizedBST, avlBST);
+		addNode(11, bst, rootInsert, randomizedBST, avlBST);
+		addNode(27, bst, rootInsert, randomizedBST, avlBST);
+		addNode(15, bst, rootInsert, randomizedBST, avlBST); // Testing whether the tree can add existed value;
+		addNode(57, bst, rootInsert, randomizedBST, avlBST);
+		addNode(108, bst, rootInsert, randomizedBST, avlBST);
+		addNode(-13, bst, rootInsert, randomizedBST, avlBST);
 
 		bst.setBfAndSize();
-		root.setBfAndSize();
+		rootInsert.setBfAndSize();
 		randomizedBST.setBfAndSize();
+		avlBST.setBfAndSize();
 
 		System.out.println(
 				"\n" + "*************************  Initial Data setting complete  *************************" + "\n");
 
 	}
 
-	private static void addNode(Integer value, BST... trees) {
+	private static void addNode(int value, BST... trees) {
 		System.out.println("The value: " + value);
 		System.out.println("Inserting by standard BST algorithm:");
 		trees[0].nodeInsert(value);
 		System.out.println("\n" + "Inserting by standard Root Insert algorithm:");
 		trees[1].rootInsert(value);
+		System.out.println("\n" + "Inserting by randomized Root Insert algorithm:");
+		trees[2].avlInsert(value);
 		System.out.println("\n" + "Inserting by AVL Insert algorithm:");
-		trees[2].randomizedInsert(value);
+		trees[3].avlInsert(value);
 		System.out.println("--------------------------------------");
 	}
 
@@ -69,12 +73,16 @@ public class DriverClass {
 		bst.printPreOrderWithHeightAndBf();
 
 		System.out.print("Root Insert algorithm:");
-		root.printAllTraversals();
-		root.printPreOrderWithHeightAndBf();
+		rootInsert.printAllTraversals();
+		rootInsert.printPreOrderWithHeightAndBf();
 
-		System.out.print("AVL algorithm:");
+		System.out.print("Randomized Root Insert algorithm:");
 		randomizedBST.printAllTraversals();
 		randomizedBST.printPreOrderWithHeightAndBf();
+
+		System.out.print("AVL algorithm:");
+		avlBST.printAllTraversals();
+		avlBST.printPreOrderWithHeightAndBf();
 	}
 
 ///////////////////////////////       Standard BST operation		///////////////////////////////////
@@ -113,17 +121,17 @@ public class DriverClass {
 		System.out.println("Before Operation:");
 
 		// printing tree before insert.
-		root.printAllTraversals();
-		root.printPreOrderWithHeightAndBf();
+		rootInsert.printAllTraversals();
+		rootInsert.printPreOrderWithHeightAndBf();
 
 		System.out.println("\n" + "Operating:" + "\n");
 
-		root.rootInsert(-7);
-		root.printAllTraversals();
+		rootInsert.rootInsert(-7);
+		rootInsert.printAllTraversals();
 		System.out.println();
 
-		root.rootInsert(4);
-		root.printAllTraversals();
+		rootInsert.rootInsert(4);
+		rootInsert.printAllTraversals();
 
 		System.out.println();
 	}
@@ -138,21 +146,21 @@ public class DriverClass {
 		// example.
 
 		// printing tree before insert.
-		randomizedBST.printAllTraversals();
-		randomizedBST.printPreOrderWithHeightAndBf();
+		avlBST.printAllTraversals();
+		avlBST.printPreOrderWithHeightAndBf();
 
 		System.out.println("\n" + "Operating:" + "\n");
 
 		// Inserting by AVL insert algorithm.
-		randomizedBST.nodeInsert(4);
-		randomizedBST.printAllTraversals();
-		randomizedBST.printPreOrderWithHeightAndBf(); // Printing the balance factor to confirm it belong to [ -1, 0,
+		avlBST.nodeInsert(4);
+		avlBST.printAllTraversals();
+		avlBST.printPreOrderWithHeightAndBf(); // Printing the balance factor to confirm it belong to [ -1, 0,
 		// 1].
 
 		// Deleting by AVL delete algorithm.
-		randomizedBST.randomizedDelete(7);
-		randomizedBST.printAllTraversals();
-		randomizedBST.printPreOrderWithHeightAndBf(); // Printing the balance factor to confirm it belong to [ -1, 0,
+		avlBST.avlDelete(7);
+		avlBST.printAllTraversals();
+		avlBST.printPreOrderWithHeightAndBf(); // Printing the balance factor to confirm it belong to [ -1, 0,
 		// 1].
 	}
 

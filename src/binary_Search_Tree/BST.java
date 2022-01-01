@@ -69,7 +69,7 @@ public class BST {
 
 /////////////////////////////       AVL insertion and delete    //////////////////////
 
-	public void randomizedInsert(int value) {
+	public void avlInsert(int value) {
 		if (isEmpty()) {
 			root = new BSTNode(value);
 			System.out.println("Successful insertion");
@@ -79,7 +79,7 @@ public class BST {
 		}
 	}
 
-	public void randomizedDelete(int value) {
+	public void avlDelete(int value) {
 		if (root.nodeSearch(value) == null) {
 			System.out.println("The value: " + value + " is not existed");
 		} else {
