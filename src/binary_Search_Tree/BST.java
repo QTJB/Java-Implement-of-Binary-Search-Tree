@@ -53,7 +53,7 @@ public class BST {
 		setBfAndSize();
 	}
 
-////////////////////////////////           Root Insertion             ////////////////////////// 	
+////////////////////////////////           Root Insertion and Search         ////////////////////////// 	
 
 	// Root insert function
 	public void rootInsert(int value) {
@@ -65,6 +65,20 @@ public class BST {
 			System.out.println("Successful Root insert if node is not existed.");
 		}
 		setBfAndSize();
+	}
+
+	public void rootSearch(int value) {
+		if (isEmpty()) {
+			System.out.println("\n" + "The value is not existed");
+		} else {
+			BSTNode temp = BSTNode.rootSearch(root, value);
+			if (temp != null) {
+				System.out.println("\n" + "The value is existed");
+				root = temp;
+			} else {
+				System.out.println("\n" + "The value is not existed");
+			}
+		}
 	}
 
 /////////////////////////////       AVL insertion and delete    //////////////////////
@@ -92,6 +106,7 @@ public class BST {
 /////////////////////////////              Printing nodes function    //////////////////////////       	
 	public void printAllTraversals() {
 		System.out.println();
+		setBfAndSize();
 		printPreOrder();
 		printInOrder();
 		printPostOrder();

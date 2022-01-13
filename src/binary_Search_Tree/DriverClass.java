@@ -3,7 +3,7 @@ package binary_Search_Tree;
 public class DriverClass {
 
 	static BST bst = new BST();
-	static BST rootInsert = new BST();
+	static BST rootBST = new BST();
 	static BST randomizedBST = new BST();
 	static BST avlBST = new BST();
 
@@ -16,34 +16,34 @@ public class DriverClass {
 		printInitialOrder();
 
 //////////////////////////////    Testing each algorithm          //////////////////////////////
-		testBST();
-		testRootInsert();
-		testAvlTree();
+//		testBST();
+		testRootBST();
+//		testAvlTree();
 
 	}
 
 	private static void setNode() {
 //		Inserting 16 number of values including one repeat value:15.
 //		Therefore, total number of available values : 15.
-		addNode(-6, bst, rootInsert, randomizedBST, avlBST);
-		addNode(-8, bst, rootInsert, randomizedBST, avlBST);
-		addNode(0, bst, rootInsert, randomizedBST, avlBST);
-		addNode(1, bst, rootInsert, randomizedBST, avlBST);
-		addNode(6, bst, rootInsert, randomizedBST, avlBST);
-		addNode(15, bst, rootInsert, randomizedBST, avlBST);
-		addNode(40, bst, rootInsert, randomizedBST, avlBST);
-		addNode(456, bst, rootInsert, randomizedBST, avlBST);
-		addNode(7, bst, rootInsert, randomizedBST, avlBST);
-		addNode(31, bst, rootInsert, randomizedBST, avlBST);
-		addNode(11, bst, rootInsert, randomizedBST, avlBST);
-		addNode(27, bst, rootInsert, randomizedBST, avlBST);
-		addNode(15, bst, rootInsert, randomizedBST, avlBST); // Testing whether the tree can add existed value;
-		addNode(57, bst, rootInsert, randomizedBST, avlBST);
-		addNode(108, bst, rootInsert, randomizedBST, avlBST);
-		addNode(-13, bst, rootInsert, randomizedBST, avlBST);
+		addNode(-6, bst, rootBST, randomizedBST, avlBST);
+		addNode(-8, bst, rootBST, randomizedBST, avlBST);
+		addNode(0, bst, rootBST, randomizedBST, avlBST);
+		addNode(1, bst, rootBST, randomizedBST, avlBST);
+		addNode(6, bst, rootBST, randomizedBST, avlBST);
+		addNode(15, bst, rootBST, randomizedBST, avlBST);
+		addNode(40, bst, rootBST, randomizedBST, avlBST);
+		addNode(456, bst, rootBST, randomizedBST, avlBST);
+		addNode(7, bst, rootBST, randomizedBST, avlBST);
+		addNode(31, bst, rootBST, randomizedBST, avlBST);
+		addNode(11, bst, rootBST, randomizedBST, avlBST);
+		addNode(27, bst, rootBST, randomizedBST, avlBST);
+		addNode(15, bst, rootBST, randomizedBST, avlBST); // Testing whether the tree can add existed value;
+		addNode(57, bst, rootBST, randomizedBST, avlBST);
+		addNode(108, bst, rootBST, randomizedBST, avlBST);
+		addNode(-13, bst, rootBST, randomizedBST, avlBST);
 
 		bst.setBfAndSize();
-		rootInsert.setBfAndSize();
+		rootBST.setBfAndSize();
 		randomizedBST.setBfAndSize();
 		avlBST.setBfAndSize();
 
@@ -73,8 +73,8 @@ public class DriverClass {
 		bst.printPreOrderWithHeightAndBf();
 
 		System.out.print("Root Insert algorithm:");
-		rootInsert.printAllTraversals();
-		rootInsert.printPreOrderWithHeightAndBf();
+		rootBST.printAllTraversals();
+		rootBST.printPreOrderWithHeightAndBf();
 
 		System.out.print("Randomized Root Insert algorithm:");
 		randomizedBST.printAllTraversals();
@@ -113,27 +113,53 @@ public class DriverClass {
 
 	}
 
-///////////////////////////////              Root Insert                ///////////////////////////////////
-	private static void testRootInsert() {
+///////////////////////////////              Root Insert  and  search            ///////////////////////////////////
+	private static void testRootBST() {
 		// Already using root insert during the data setting process. Here is just
 		// example.
 		System.out.println("\n" + "*************************  Root Insert operation  *************************" + "\n");
 		System.out.println("Before Operation:");
 
 		// printing tree before insert.
-		rootInsert.printAllTraversals();
-		rootInsert.printPreOrderWithHeightAndBf();
+		rootBST.printAllTraversals();
+		rootBST.printPreOrderWithHeightAndBf();
 
 		System.out.println("\n" + "Operating:" + "\n");
 
-		rootInsert.rootInsert(-7);
-		rootInsert.printAllTraversals();
+		rootBST.rootInsert(-7);
+		rootBST.printAllTraversals();
 		System.out.println();
 
-		rootInsert.rootInsert(4);
-		rootInsert.printAllTraversals();
-
+		rootBST.rootInsert(4);
+		rootBST.printAllTraversals();
 		System.out.println();
+
+		System.out.println("\n" + "*************************  Root search operation  *************************" + "\n");
+		System.out.println("Before Operation:");
+
+		// printing tree before insert.
+		rootBST.printAllTraversals();
+
+		rootBST.rootSearch(25);
+		rootBST.printAllTraversals();
+		System.out.println();
+
+		rootBST.rootSearch(-6);
+		rootBST.printAllTraversals();
+		System.out.println();
+
+		rootBST.rootSearch(40);
+		rootBST.printAllTraversals();
+		System.out.println();
+
+		rootBST.rootSearch(456);
+		rootBST.printAllTraversals();
+		System.out.println();
+
+		rootBST.rootSearch(11);
+		rootBST.printAllTraversals();
+		System.out.println();
+
 	}
 
 ///////////////////////////////       AVL insert and delete		///////////////////////////////////

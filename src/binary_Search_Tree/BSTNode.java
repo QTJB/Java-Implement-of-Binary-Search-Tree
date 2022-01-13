@@ -96,7 +96,6 @@ public class BSTNode {
 
 	// Implementation of root insert;
 	// If return false means node is already existed.
-
 	static BSTNode rootInsert(BSTNode node, int value) {
 		if (node.nodeSearch(value) != null) {// key is already in the tree
 			System.out.println("The tree already contains a node with the value: " + value);
@@ -120,6 +119,45 @@ public class BSTNode {
 			node.rightNode = rootInsertHelper(node.rightNode, value);
 			node = leftRotation(node);
 			return node;
+		}
+	}
+
+	// Implementation of root search;
+	// If return false means node is already existed.
+
+	static BSTNode rootSearch(BSTNode node, int value) {
+		if (node.value == value) {
+			return node;
+		}
+
+		BSTNode temp = null;
+		if (node.value < value) {
+			if (node.rightNode != null) {
+				temp = rootSearch(node.rightNode, value);
+				if (temp != null) {
+					node.rightNode = temp;
+					node = leftRotation(node);
+					return node;
+				} else {
+					return null;
+				}
+
+			} else {
+				return null;
+			}
+		} else {
+			if (node.leftNode != null) {
+				temp = rootSearch(node.leftNode, value);
+				if (temp != null) {
+					node.leftNode = temp;
+					node = rightRotation(node);
+					return node;
+				} else {
+					return null;
+				}
+			} else {
+				return null;
+			}
 		}
 	}
 
@@ -232,11 +270,11 @@ public class BSTNode {
 		node = node.leftNode;
 		tempNode.leftNode = node.rightNode;
 		node.rightNode = tempNode;
-		System.out.println("Right rotation successful");
+//		System.out.println("Right rotation successful");
 		return node;
 	}
 
-	// Left rotation function. Node is the parent of the newly inserted node.
+// Left rotation function. Node is the parent of the newly inserted node.
 	static BSTNode leftRotation(BSTNode node) {
 		if (node == null) {
 			System.out.println("Left rotation faild, the node is not exited" + "\n");
@@ -251,7 +289,7 @@ public class BSTNode {
 		node = node.rightNode;
 		tempNode.rightNode = node.leftNode;
 		node.leftNode = tempNode;
-		System.out.println("Left rotation successful");
+//		System.out.println("Left rotation successful");
 		return node;
 	}
 
@@ -303,7 +341,8 @@ public class BSTNode {
 ///////////////////////////////////       All auxiliary functions.	    ///////////////////////////////////
 
 	// Private method required by nodeDelete:
-	// If the node that looking for parent is Root of hole trees; It will return the
+	// If the node that is looking for parent is Root of hole trees; It will return
+	// the
 	// root itself.
 	// So check whether node is root first.
 	// This function should based on the root of hole trees(root of the
