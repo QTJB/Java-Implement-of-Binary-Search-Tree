@@ -161,7 +161,7 @@ public class BSTNode {
 		}
 	}
 
-////////////////////////////////  Randomized insertion and delete    //////////////////////
+////////////////////////////////  Randomized insertion    //////////////////////
 
 	static BSTNode randomizedInsert(BSTNode node, int value, int size) {
 		if (node.nodeSearch(value) != null) {// key is already in the tree
