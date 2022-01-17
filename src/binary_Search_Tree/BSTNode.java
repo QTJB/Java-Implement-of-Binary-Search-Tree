@@ -92,7 +92,7 @@ public class BSTNode {
 
 	}
 
-//////////////////////////////          Root Insertion            ////////////////////////////////////////
+//////////////////////////////          Root Insertion and search           ////////////////////////////////////////
 
 	// Implementation of root insert;
 	// If return false means node is already existed.
@@ -158,6 +158,22 @@ public class BSTNode {
 			} else {
 				return null;
 			}
+		}
+	}
+
+////////////////////////////////  Randomized insertion and delete    //////////////////////
+
+	static BSTNode randomizedInsert(BSTNode node, int value, int size) {
+		if (node.nodeSearch(value) != null) {// key is already in the tree
+			System.out.println("The tree already contains a node with the value: " + value);
+			return node;
+		}
+
+		if (Math.random() <= (1 / (size + 1.0))) {
+			return rootInsert(node, value);
+		} else {
+			node.nodeInsert(value);
+			return node;
 		}
 	}
 
