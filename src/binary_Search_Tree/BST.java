@@ -102,8 +102,7 @@ public class BST {
 		tempBstNode = BSTNode.randomizedDelete(root, value);
 		if (tempBstNode != null) {
 			root = tempBstNode;
-			root.setAllSize();
-			root.setAllSize();
+			root.setAllBalancedFactor();
 		}
 	}
 

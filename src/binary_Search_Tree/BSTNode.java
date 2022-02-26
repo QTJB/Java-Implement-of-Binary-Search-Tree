@@ -225,13 +225,15 @@ public class BSTNode {
 	}
 
 	static BSTNode randomizedDeleteHelper(BSTNode node) {
-		node.setAllSize();
 
 		if (node.rightNode == null) {
 			return node.leftNode;
 		} else if (node.leftNode == null) {
 			return node.rightNode;
 		}
+
+		node.leftNode.size = getSize(node.leftNode);
+		node.rightNode.size = getSize(node.rightNode);
 
 		double leftNumber = node.leftNode.size + 1;
 		double rightNumber = node.rightNode.size + 1;
@@ -250,7 +252,7 @@ public class BSTNode {
 		transferBSTtoArray(joinNode, temp, 0);
 
 		for (int i = 0; i < temp.length; i++) {
-			mainNode = randomizedInsert(mainNode, temp[i], size);
+			mainNode = randomizedInsert(mainNode, temp[i], mainNode.size++);
 		}
 
 		return mainNode;
@@ -560,7 +562,7 @@ public class BSTNode {
 	}
 
 //	Calculating the size.
-	int getSize(BSTNode node) {
+	static int getSize(BSTNode node) {
 
 		int size = 0;
 
