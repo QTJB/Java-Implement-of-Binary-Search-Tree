@@ -13,11 +13,12 @@ public class DriverClass {
 		setNode(); // Setting test data.
 
 //////////////////////////////	Printing values that inserted to the trees. Each algorithm will print by three traversals way.    //////////////////////////////
-		printInitialOrder();
+//		printInitialOrder();
 
 //////////////////////////////    Testing each algorithm          //////////////////////////////
 //		testBST();
 //		testRootBST();
+		testRandomizedBst();
 //		testAvlTree();
 
 	}
@@ -59,7 +60,7 @@ public class DriverClass {
 		System.out.println("\n" + "Inserting by standard Root Insert algorithm:");
 		trees[1].rootInsert(value);
 		System.out.println("\n" + "Inserting by randomized Root Insert algorithm:");
-		trees[2].RandomizedInsert(value);
+		trees[2].randomizedInsert(value);
 		System.out.println("\n" + "Inserting by AVL Insert algorithm:");
 		trees[3].avlInsert(value);
 		System.out.println("--------------------------------------");
@@ -68,21 +69,21 @@ public class DriverClass {
 //	Printing values that inserted to the trees. Each algorithm will print by three traversals way.
 //	Printing the value with their height and balance factor by Pre-order traversal way.
 	private static void printInitialOrder() {
-//		System.out.print("Standard BST algorithm:");
-//		bst.printAllTraversals();
-//		bst.printPreOrderWithHeightAndBf();
-//
-//		System.out.print("Root Insert algorithm:");
-//		rootBST.printAllTraversals();
-//		rootBST.printPreOrderWithHeightAndBf();
+		System.out.print("Standard BST algorithm:");
+		bst.printAllTraversals();
+		bst.printPreOrderWithHeightAndBf();
+
+		System.out.print("Root Insert algorithm:");
+		rootBST.printAllTraversals();
+		rootBST.printPreOrderWithHeightAndBf();
 
 		System.out.print("Randomized Root Insert algorithm:");
 		randomizedBST.printAllTraversals();
 		randomizedBST.printPreOrderWithHeightAndBf();
 
-//		System.out.print("AVL algorithm:");
-//		avlBST.printAllTraversals();
-//		avlBST.printPreOrderWithHeightAndBf();
+		System.out.print("AVL algorithm:");
+		avlBST.printAllTraversals();
+		avlBST.printPreOrderWithHeightAndBf();
 	}
 
 ///////////////////////////////       Standard BST operation		///////////////////////////////////
@@ -160,6 +161,58 @@ public class DriverClass {
 		rootBST.printAllTraversals();
 		System.out.println();
 
+	}
+
+//////////////////////////////////////////  Randomized insert and delete   //////////////////////////////////////
+
+	private static void testRandomizedBst() {
+		System.out.println(
+				"\n" + "*************************  Randomized insert and delete operation  *************************"
+						+ "\n");
+		System.out.println("Before Operation:");
+
+		randomizedBST.printAllTraversals();
+		randomizedBST.printPreOrderWithHeightAndBf();
+
+		System.out.println("\n" + "*************************  Randomized insert  *************************" + "\n");
+
+		randomizedBST.randomizedInsert(58);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		randomizedBST.randomizedInsert(66);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		randomizedBST.randomizedInsert(-81);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		System.out.println("\n" + "*************************  Randomized delete  *************************" + "\n");
+		System.out.println("Before Operation:");
+
+		randomizedBST.printAllTraversals();
+		randomizedBST.printPreOrderWithHeightAndBf();
+
+		System.out.println("----------" + "\n");
+		randomizedBST.randomizedDelete(40);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		System.out.println("----------" + "\n");
+		randomizedBST.randomizedDelete(27);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		System.out.println("----------" + "\n");
+		randomizedBST.randomizedDelete(108);
+		randomizedBST.printAllTraversals();
+		System.out.println();
+
+		System.out.println("----------" + "\n");
+		randomizedBST.randomizedDelete(77);
+		randomizedBST.printAllTraversals();
+		System.out.println();
 	}
 
 ///////////////////////////////       AVL insert and delete		///////////////////////////////////

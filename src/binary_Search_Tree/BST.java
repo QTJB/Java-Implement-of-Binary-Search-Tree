@@ -84,15 +84,27 @@ public class BST {
 ////////////////////////////////    Randomized Insertion         ////////////////////////// 
 
 	// Root insert function
-	public void RandomizedInsert(int value) {
+	public void randomizedInsert(int value) {
 		if (isEmpty()) { // Checking whether root is empty.
 			root = new BSTNode(value);
 			System.out.println("Successful insertion");
 		} else {
+			root.setAllSize();
 			root = BSTNode.randomizedInsert(root, value, root.size);
 			System.out.println("Successful Randomized insert if node is not existed.");
 		}
 		setBfAndSize();
+	}
+
+	public void randomizedDelete(int value) {
+
+		BSTNode tempBstNode = null;
+		tempBstNode = BSTNode.randomizedDelete(root, value);
+		if (tempBstNode != null) {
+			root = tempBstNode;
+			root.setAllSize();
+			root.setAllSize();
+		}
 	}
 
 /////////////////////////////       AVL insertion and delete    //////////////////////

@@ -177,6 +177,86 @@ public class BSTNode {
 		}
 	}
 
+	static BSTNode randomizedDelete(BSTNode root, int value) {
+//   // check whether value existed
+		BSTNode temp = randomizedDeleteValueCheck(root, value);
+		if (temp == null) {
+			System.out.println("Value not exist");
+			return null;
+		} else { // the node that is going to delete is at root
+			return randomizedDeleteHelper(temp);
+		}
+	}
+
+	static BSTNode randomizedDeleteValueCheck(BSTNode node, int value) {
+		// First find whether the value existed.
+		if (node.value == value) {
+			return node; // existed
+		} else {
+			if (value < node.value) {
+				if (node.leftNode != null) {
+					BSTNode temp = randomizedDeleteValueCheck(node.leftNode, value);
+					if (temp != null) {
+						node.leftNode = temp;
+						node = rightRotation(node);
+						return node;
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			} else {
+				if (node.rightNode != null) {
+					BSTNode temp = randomizedDeleteValueCheck(node.rightNode, value);
+					if (temp != null) {
+						node.rightNode = temp;
+						node = leftRotation(node);
+						return node;
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+
+			}
+		}
+	}
+
+	static BSTNode randomizedDeleteHelper(BSTNode node) {
+		node.setAllSize();
+
+		if (node.rightNode == null) {
+			return node.leftNode;
+		} else if (node.leftNode == null) {
+			return node.rightNode;
+		}
+
+		double leftNumber = node.leftNode.size + 1;
+		double rightNumber = node.rightNode.size + 1;
+
+		if (Math.random() < (leftNumber / (leftNumber + rightNumber))) {// join rightBST into leftBST
+
+			return jointTwoBst(node.leftNode, node.rightNode, (int) rightNumber);
+
+		} else {// join leftBST into rightBST
+			return jointTwoBst(node.rightNode, node.leftNode, (int) leftNumber);
+		}
+	}
+
+	static BSTNode jointTwoBst(BSTNode mainNode, BSTNode joinNode, int size) {
+		int[] temp = new int[size];
+		transferBSTtoArray(joinNode, temp, 0);
+
+		for (int i = 0; i < temp.length; i++) {
+			mainNode = randomizedInsert(mainNode, temp[i], size);
+		}
+
+		return mainNode;
+
+	}
+
 ////////////////////////////////      AVL insertion and delete    //////////////////////
 
 //	AVL insert. recursive process.
@@ -383,6 +463,21 @@ public class BSTNode {
 			}
 		}
 		return null;
+	}
+
+	static int transferBSTtoArray(BSTNode node, int[] array, int index) {
+
+		if (node.leftNode != null) {
+			index = transferBSTtoArray(node.leftNode, array, index);
+		}
+
+		array[index++] = node.value;
+
+		if (node.rightNode != null) {
+			index = transferBSTtoArray(node.rightNode, array, index);
+		}
+
+		return index;
 	}
 
 //    Finding the next in-order node.
