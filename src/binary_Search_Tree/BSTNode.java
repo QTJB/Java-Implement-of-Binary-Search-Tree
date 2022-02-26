@@ -138,13 +138,10 @@ public class BSTNode {
 					node.rightNode = temp;
 					node = leftRotation(node);
 					return node;
-				} else {
-					return null;
 				}
-
-			} else {
-				return null;
 			}
+			return null;
+
 		} else {
 			if (node.leftNode != null) {
 				temp = rootSearch(node.leftNode, value);
@@ -152,12 +149,9 @@ public class BSTNode {
 					node.leftNode = temp;
 					node = rightRotation(node);
 					return node;
-				} else {
-					return null;
 				}
-			} else {
-				return null;
 			}
+			return null;
 		}
 	}
 
@@ -200,12 +194,9 @@ public class BSTNode {
 						node.leftNode = temp;
 						node = rightRotation(node);
 						return node;
-					} else {
-						return null;
 					}
-				} else {
-					return null;
 				}
+				return null;
 			} else {
 				if (node.rightNode != null) {
 					BSTNode temp = randomizedDeleteValueCheck(node.rightNode, value);
@@ -213,13 +204,10 @@ public class BSTNode {
 						node.rightNode = temp;
 						node = leftRotation(node);
 						return node;
-					} else {
-						return null;
 					}
-				} else {
-					return null;
-				}
 
+				}
+				return null;
 			}
 		}
 	}
