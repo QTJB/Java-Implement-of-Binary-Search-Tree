@@ -6,3 +6,5 @@
 2.AVL tree
 
 3.Root insert
+
+4.Randomized insert and delete
